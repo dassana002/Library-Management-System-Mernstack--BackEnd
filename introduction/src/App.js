@@ -10,6 +10,13 @@ const bookRoutes = require("./routes/BookRoutes")
 // Find a Execute / Resolve controller  
 App.use("/api/v1", bookRoutes)
 
+
+// Mongoose configurations
+mongoose.connect("mongodb://localhost:27017/LMSdatabase",
+{ useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => console.log("Connected to MongoDB"))
+.catch(err => console.error("Failed to connect to MongoDB", err))
+
 App.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
