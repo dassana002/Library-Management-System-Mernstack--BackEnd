@@ -1,12 +1,24 @@
 const express = require("express")
 const router = express.Router()
 const bookUrl = "/books"
-const bookService = require('../services/BookService'); 
+const bookService = require('../services/BookService');
 
 router.get(bookUrl, async (req, res) => {
     try {
-        const allBooks = await bookService.getAllBooks();
-        res.json(allBooks) // return kranwa books json objects widiyata
+        const filteredBooks = allBooks.map(book => ({
+            bookId: book.bookId,
+            title: book.title,
+            isbn: book.title,
+            author: book.author,
+            edition: book.edition,
+            price: book.price,
+            totalQty: book.totalQty,
+            avilableQty: book.avilableQty,
+            lastUpdatedDate: book.lastUpdatedDate,
+            lastUpdatedTime: book.lastUpdatedTime
+        }));
+        console.log("Filterd book", filteredBooks)
+        res.json(filteredBooks) // return kranwa books json objects widiyata
     } catch (er) {
         console.error(er)
     }
@@ -25,7 +37,7 @@ router.post(bookUrl, async (req, res) => {
 
 router.patch(bookUrl, async (req, res) => {
     try {
-        await BookService.updateBook(req.params,req.body);
+        await BookService.updateBook(req.params, req.body);
         res.status(204).send("Update Book!!")
     } catch (er) {
         console.error(er)

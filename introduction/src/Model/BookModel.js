@@ -12,7 +12,7 @@ const bookSchema = new mongoose.Schema({
     totalQty: { type: Number, required: true },
     avilableQty: { type: Number, required: true },
     lastUpdatedDate: { type: String, default: () => new Date().toISOString().split("T")[0] },
-    lastUpdatedTime: { type: String, default: () => new Date().toISOString().split(" ")[0] }
+    lastUpdatedTime: { type: String, default: () => new Date().toTimeString().split(" ")[0] }
 });
 
 module.exports = mongoose.model("Book", bookSchema);
