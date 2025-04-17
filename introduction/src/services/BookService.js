@@ -1,21 +1,20 @@
+const Book = require("../Model/BookModel")
+
 async function getAllBooks() {
-    console.log("Get All Books")
-    return;
+    return Book.find()
 }
 
 async function addBook(book) {
-    console.log("Add Book")
-    return;
+    const saveBook =  new Book(book)
+     return saveBook.save()
 }
 
 async function updateBook(bookId, book) {
-    console.log("Update Book")
-    return;
+    return Book.findOneAndUpdate({bookId: bookId},book,{new: true})
 }
 
 async function deleteBook(bookId) {
-    console.log("Delete Book")
-    return;
+    return Book.findOneAndDelete(bookId)
 }
 
 module.exports = { getAllBooks, addBook, updateBook, deleteBook }

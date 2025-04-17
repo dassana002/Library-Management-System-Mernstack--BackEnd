@@ -1,6 +1,9 @@
+// Express import
 const express = require('express')
 const App = express()
 const port = 3500
+
+// Mongoose import
 const mongoose = require('mongoose');
 
 const bookRoutes = require("./routes/BookRoutes")
@@ -19,5 +22,5 @@ mongoose.connect("mongodb://localhost:27017/LMSdatabase",
 .catch(err => console.error("Failed to connect to MongoDB", err))
 
 App.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`LMS-App listening on port ${port}`)
 })

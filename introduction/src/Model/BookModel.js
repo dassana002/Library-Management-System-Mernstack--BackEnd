@@ -8,9 +8,9 @@ const mongoose = require("mongoose")
      isbn:{type: String, required: true, unique: true},
      author:{type: String, required: true},
      edition:{type: String, required: true},
-     price:{type: String, required: true},
-     totalQty:{type: String, required: true},
-     avilableQty:{type: String, required: true},
+     price:{type: Number, required: true},
+     totalQty:{type: Number, required: true},
+     avilableQty:{type: Number, required: true},
      lastUpdatedDate: {type: String, default: () => new Date().toISOString().split("T")[0]},
      lastUpdatedTime: {type: String, default: () => new Date().toISOString().split(" ")[0]}
  });
