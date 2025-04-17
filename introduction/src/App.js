@@ -1,11 +1,13 @@
-const http = require("http")
-const PORT = 3500
+const express = require('express')
+const App = express()
+const port = 3500
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, { "Content-Type": "text/plain" })
-    res.end("Hello MERN - CMJD 109")
-});
+const bookRoutes = require("./routes/BookRoutes")
 
-server.listen(PORT, () => {
-    console.log(`Server Started PORT: ${PORT} `)
+// meya wada kranne Dispature servelate ekk widiyata ( Dispature Part)
+// Url eke "/books" kiyla awoth request eka book routes(controller layer ekata yawanawa)
+App.use("/api/v1", bookRoutes)
+
+App.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
 })
