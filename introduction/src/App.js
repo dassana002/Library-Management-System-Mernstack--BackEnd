@@ -4,8 +4,10 @@ const port = 3500
 
 const bookRoutes = require("./routes/BookRoutes")
 
-// meya wada kranne Dispature servelate ekk widiyata ( Dispature Part)
+// meya wada kranne Dispature servelate ekk widiyata ( Dispature Part, configuration hold)
 // Url eke "/books" kiyla awoth request eka book routes(controller layer ekata yawanawa)
+// Url ekk handles walta pass krann use() method eka use kranwa 
+// Find a Execute / Resolve controller  
 App.use("/api/v1", bookRoutes)
 
 App.listen(port, () => {

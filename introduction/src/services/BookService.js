@@ -8,12 +8,10 @@ async function addBook(book) {
     return;
 }
 
-
 async function updateBook(bookId, book) {
     console.log("Update Book")
     return;
 }
-
 
 async function deleteBook(bookId) {
     console.log("Delete Book")

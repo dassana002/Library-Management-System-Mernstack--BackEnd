@@ -3,9 +3,7 @@ const router = express.Router()
 const bookUrl = "/books"
 const BookService = require("../services/BookService")
 
-
 router.get(bookUrl, async (req, res) => {
-    // controll a get request
     try{
         await BookService.getAllBooks();
         res.status(200).send("Get Books!!")
