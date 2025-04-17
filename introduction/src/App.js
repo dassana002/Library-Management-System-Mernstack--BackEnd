@@ -18,15 +18,15 @@ App.use(express.json())
 // Url eke "/books" kiyla awoth request eka book routes(controller layer ekata yawanawa)
 // Url ekk handles walta pass krann use() method eka use kranwa 
 // Find a Execute / Resolve controller  
-App.use("/api/v1", bookRoutes)
+App.use('/api/v1', bookRoutes)
 
 //handle CORS issue
 App.use(cors({
     origin: ["http://localhost:3000"],
-    methods: ['GET','POST','PATCH','PUT','DELETE','OPTIONS'],
-    allowedHeaders:['Content-Type','Authorization'],
+    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
-  }));
+}));
 
 // Mongoose configurations
 mongoose.connect("mongodb://localhost:27017/LMSdatabase",
