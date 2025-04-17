@@ -5,12 +5,12 @@ async function getAllBooks() {
 }
 
 async function addBook(book) {
-    const saveBook =  new Book(book)
-     return saveBook.save()
+    const saveBook = new Book(book)
+    return saveBook.save()
 }
 
 async function updateBook(bookId, book) {
-    return Book.findOneAndUpdate({bookId: bookId},book,{new: true})
+    return Book.findOneAndUpdate({ bookId: bookId }, book, { new: true })
 }
 
 async function deleteBook(bookId) {
