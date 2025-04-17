@@ -5,6 +5,9 @@ const port = 3500
 
 // Mongoose import
 const mongoose = require('mongoose');
+// CORS import
+const cors = require('cors');
+
 
 const bookRoutes = require("./routes/BookRoutes")
 
@@ -18,7 +21,7 @@ App.use(express.json())
 App.use("/api/v1", bookRoutes)
 
 //handle CORS issue
-app.use(cors({
+App.use(cors({
     origin: ["http://localhost:3000"],
     methods: ['GET','POST','PATCH','PUT','DELETE','OPTIONS'],
     allowedHeaders:['Content-Type','Authorization'],
