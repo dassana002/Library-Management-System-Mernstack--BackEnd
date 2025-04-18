@@ -10,6 +10,7 @@ const cors = require('cors');
 
 const memberRoutes = require('./routes/MemberRoute')
 const bookRoutes = require("./routes/BookRoute")
+const staffRoutes = require('./routes/StaffRoute')
 
 // JSON object handle (This is Meddle war---> application eka mada idn support kranwa, wada kranwa)
 App.use(express.json())
@@ -20,6 +21,7 @@ App.use(express.json())
 // Find a Execute / Resolve controller  
 App.use('/api/v1', bookRoutes)
 App.use('/api/v1/', memberRoutes)
+App.use('/api/v1/', staffRoutes)
 
 //handle CORS issue
 App.use(cors({

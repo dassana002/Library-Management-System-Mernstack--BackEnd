@@ -34,6 +34,7 @@ router.post(bookUrl, async (req, res) => {
     res.status(201).send("Saved Successfully")
   } catch (er) {
     console.error(er)
+    res.status(500).send("Internal Server error")
   }
 });
 
@@ -43,6 +44,7 @@ router.patch(bookUrl, async (req, res) => {
     res.status(204).send("Update Book!!")
   } catch (er) {
     console.error(er)
+    res.status(500).send("Internal Server error")
   }
 });
 
@@ -52,6 +54,7 @@ router.delete(bookUrl, async (req, res) => {
     res.status(204).send("Delete Book!!")
   } catch (er) {
     console.error(er)
+    res.status(500).send("Internal Server error")
   }
 });
 

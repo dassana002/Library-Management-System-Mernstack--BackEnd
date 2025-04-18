@@ -9,6 +9,7 @@ router.get(memberUrl ,async(req ,res)=> {
         res.json(allMember).status(201)
     } catch (error) {
         console(error)
+        res.status(500).send("Internal Server error")
     }
 })
 
@@ -18,6 +19,7 @@ router.post(memberUrl ,async(req ,res)=>{
         res.status(201).send("Member Saved Successfully")
     } catch (error) {
         console(error)
+        res.status(500).send("Internal Server error")
     }
 })
 
@@ -27,6 +29,7 @@ router.patch(memberUrl ,async(req,res)=>{
         res.status(201).send("Member Updated Successed")
     } catch (error) {
         console.log(error)
+        res.status(500).send("Internal Server error")
     }
 })
 
@@ -36,6 +39,7 @@ router.delete(memberUrl ,async(req ,res)=>{
         res.status(201).send("Member Deleted ")
     } catch (error) {
         console.log(error)
+        res.status(500).send("Internal Server error")
     }
 })
 
