@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 // CORS import
 const cors = require('cors');
 
-
+const memberRoutes = require('./routes/MemberRoutes')
 const bookRoutes = require("./routes/BookRoutes")
 
 // JSON object handle (This is Meddle war---> application eka mada idn support kranwa, wada kranwa)
@@ -19,6 +19,7 @@ App.use(express.json())
 // Url ekk handles walta pass krann use() method eka use kranwa 
 // Find a Execute / Resolve controller  
 App.use('/api/v1', bookRoutes)
+App.use('/api/v1/', memberRoutes)
 
 //handle CORS issue
 App.use(cors({
