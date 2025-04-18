@@ -8,8 +8,8 @@ const mongoose = require('mongoose');
 // CORS import
 const cors = require('cors');
 
-const memberRoutes = require('./routes/MemberRoutes')
-const bookRoutes = require("./routes/BookRoutes")
+const memberRoutes = require('./routes/MemberRoute')
+const bookRoutes = require("./routes/BookRoute")
 
 // JSON object handle (This is Meddle war---> application eka mada idn support kranwa, wada kranwa)
 App.use(express.json())

@@ -1,11 +1,11 @@
 const express = require('express')
-const { route } = require('./BookRoute')
 const router = express.Router()
 const memberUrl = '/members'
+const memberService = require('../services/MemberService')
 
 router.get(memberUrl ,async(req ,res)=> {
     try {
-        const allMember = await memberService.getAllMember()
+        const allMember = await memberService.getAllMembers()
         res.json(allMember).status(201)
     } catch (error) {
         console(error)
@@ -15,7 +15,7 @@ router.get(memberUrl ,async(req ,res)=> {
 router.post(memberUrl ,async(req ,res)=>{
     try {
         await memberService.addMember(req.body)
-        res.status(201).send("Member Save Successfully")
+        res.status(201).send("Member Saved Successfully")
     } catch (error) {
         console(error)
     }
@@ -24,7 +24,7 @@ router.post(memberUrl ,async(req ,res)=>{
 router.patch(memberUrl ,async(req,res)=>{
     try {
         await memberService.updateMember(req.body ,req.params)
-        res.status(201).send("Member Update Successed")
+        res.status(201).send("Member Updated Successed")
     } catch (error) {
         console.log(error)
     }
@@ -38,3 +38,5 @@ router.delete(memberUrl ,async(req ,res)=>{
         console.log(error)
     }
 })
+
+module.exports = router
