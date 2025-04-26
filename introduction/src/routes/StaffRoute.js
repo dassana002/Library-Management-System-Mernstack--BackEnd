@@ -16,7 +16,7 @@ router.get(staffUrl, async(req ,res)=> {
 router.post(staffUrl, async(req ,res)=> {
     try {
         await staffService.addStaff(req.body)
-        res.send(201).status("Saved successfully")
+        res.status(201).send("saved ")
     } catch (error) {
         console.error(error)
         res.status(500).send("Internal Server error")
@@ -26,7 +26,7 @@ router.post(staffUrl, async(req ,res)=> {
 router.patch(staffUrl, async(req ,res)=> {
     try {
         await staffService.updateStaff(req.params ,req.body)
-        res.send(201).status("Updated successed")
+        res.status(201).send("Updated successed")
     } catch (error) {
         console.error(error)
         res.status(500).send("Internal Server error")
@@ -36,6 +36,7 @@ router.patch(staffUrl, async(req ,res)=> {
 router.delete(staffUrl, async(req ,res)=> {
     try {
         await staffService.deleteStaff(req.params)
+        res.status(201).send("Deleted")
     } catch (error) {
         console.error(error)
         res.status(500).send("Internal Server error")
