@@ -1,11 +1,45 @@
-const http = require("http")
- const PORT = 3500
- 
- const server = http.createServer((req,res)=>{
-     res.writeHead(200,{"Content-Type":"text/plain"})
-     res.end("Hello MERN - CMJD 109")
- });
- 
- server.listen(PORT,()=>{
-     console.log(`Server Started PORT: ${PORT} `)
- })
+// Express import
+const express = require('express')
+const App = express()
+const port = 3500
+
+// Mongoose import
+const mongoose = require('mongoose');
+// CORS import
+const cors = require('cors');
+
+const memberRoutes = require('./routes/MemberRoute')
+const bookRoutes = require("./routes/BookRoute")
+const staffRoutes = require('./routes/StaffRoute')
+const lendingRoutes = require('./routes/LendingRoute')
+
+// JSON object handle (This is Meddle war---> application eka mada idn support kranwa, wada kranwa)
+App.use(express.json())
+
+// meya wada kranne Dispature servelate ekk widiyata ( Dispature Part, configuration hold)
+// Url eke "/books" kiyla awoth request eka book routes(controller layer ekata yawanawa)
+// Url ekk handles walta pass krann use() method eka use kranwa 
+// Find a Execute / Resolve controller  
+App.use('/api/v1', bookRoutes)
+App.use('/api/v1', memberRoutes)
+App.use('/api/v1', staffRoutes)
+App.use('/api/v1', lendingRoutes);
+
+//handle CORS issue
+App.use(cors({
+    origin: ["http://localhost:3000"],
+    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
+
+// Mongoose configurations
+mongoose.connect("mongodb://localhost:27017/LMSdatabase",
+    { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("Connected to MongoDB"))
+    .catch(err => console.error("Failed to connect to MongoDB", err))
+
+//
+App.listen(port, () => {
+    console.log(`LMS-App listening on port ${port}`)
+})
